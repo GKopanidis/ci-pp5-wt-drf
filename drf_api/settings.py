@@ -49,11 +49,12 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
+    'rest_framework',
     'profiles',
 ]
 
 cloudinary.config(
-	secure=True
+    secure=True
 )
 
 MIDDLEWARE = [
