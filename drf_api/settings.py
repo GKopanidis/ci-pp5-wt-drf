@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'posts',
     'comments',
     'likes',
+    'followers',
 ]
 
 cloudinary.config(
