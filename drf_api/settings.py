@@ -15,9 +15,12 @@ import os
 import re
 import dj_database_url
 import cloudinary
+import logging
 
 if os.path.exists('env.py'):
     import env
+
+logger = logging.getLogger(__name__)
 
 CLOUDINARY_STORAGE = {
     'CLOUDINARY_URL': os.environ.get('CLOUDINARY_URL')
@@ -111,18 +114,18 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-if 'CLIENT_ORIGIN' in os.environ:
-    CORS_ALLOWED_ORIGINS = [
-        os.environ.get('CLIENT_ORIGIN')
-    ]
-
 if 'CLIENT_ORIGIN_DEV' in os.environ:
-    extracted_url = re.match(
+    match = re.match(
         r'^.+-', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE
-    ).group(0)
-    CORS_ALLOWED_ORIGIN_REGEXES = [
-        rf"{extracted_url}(eu|us)\d+\w\.gitpod\.io$",
-    ]
+    )
+    if match:
+        extracted_url = match.group(0)
+        CORS_ALLOWED_ORIGIN_REGEXES = [
+            rf"{extracted_url}(eu|us)\d+\w\.gitpod\.io$",
+        ]
+    else:
+        logger.warning("CLIENT_ORIGIN_DEV environment variable does not contain the expected value or is not set.")
+        CORS_ALLOWED_ORIGIN_REGEXES = []
 
 CORS_ALLOW_CREDENTIALS = True
 
