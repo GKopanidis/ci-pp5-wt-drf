@@ -127,6 +127,8 @@ if 'CLIENT_ORIGIN_DEV' in os.environ:
         logger.warning("CLIENT_ORIGIN_DEV environment variable does not contain the expected value or is not set.")
         CORS_ALLOWED_ORIGIN_REGEXES = []
 
+CORS_ALLOW_ALL_ORIGINS = True
+
 CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = 'drf_api.urls'
