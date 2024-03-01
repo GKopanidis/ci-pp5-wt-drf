@@ -62,7 +62,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEV' in os.environ
 
-ALLOWED_HOSTS = ['localhost', 'https://ci-pp5-wt-drf-api-41499a8cdeac.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', 'ci-pp5-wt-drf-api-41499a8cdeac.herokuapp.com']
 
 if 'CLIENT_ORIGIN' in os.environ:
     CORS_ALLOWED_ORIGINS = [
