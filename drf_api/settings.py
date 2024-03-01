@@ -62,12 +62,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEV' in os.environ
 
-ALLOWED_HOSTS = [
-    os.environ.get('ALLOWED_HOST'),
-    'localhost',
-    'ci-pp5-wt-drf-api-41499a8cdeac.herokuapp.com/'
-    'https://gkopanidis-cipp5wtdrf-pkrir7z4pzz.ws-eu108.gitpod.io/'
-]
+ALLOWED_HOSTS = ['localhost', 'https://ci-pp5-wt-drf-api-41499a8cdeac.herokuapp.com']
 
 if 'CLIENT_ORIGIN' in os.environ:
     CORS_ALLOWED_ORIGINS = [
@@ -105,7 +100,6 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'dj_rest_auth.registration',
     'corsheaders',
-
     'profiles',
     'posts',
     'comments',
